@@ -1,8 +1,6 @@
-
 function Issues() {
-  return (
-    <div>Issues</div>
-  )
+  return <div>
+    Issues</div>;
 }
 
-export default Issues
+export default Issues;
