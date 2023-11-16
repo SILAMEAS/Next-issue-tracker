@@ -1,8 +1,8 @@
 "use client";
 
-import { IcreateIssue } from "@/app/ValidateSchema";
 import MSError from "@/app/components/ms-error/MSError";
-import { MSLoading } from "@/app/components/ms-error/ms-loading/MSLoading";
+import { MSLoading } from "@/app/components/ms-loading/MSLoading";
+import { IcreateIssue } from "@/app/utils/common/ValidateSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Callout, TextField } from "@radix-ui/themes";
 import axios from "axios";
@@ -13,7 +13,7 @@ import { Controller, useForm } from "react-hook-form";
 import SimpleMDE from "react-simplemde-editor";
 import { z } from "zod";
 
-type IssuesForm = z.infer<typeof IcreateIssue>;
+export type IssuesForm = z.infer<typeof IcreateIssue>;
 function NewIssue() {
   const router = useRouter();
   const {
@@ -28,15 +28,15 @@ function NewIssue() {
     },
     resolver: zodResolver(IcreateIssue),
   });
-   //** state store message error from backend  */
+  //** state store message error from backend  */
   const [error, setError] = useState<string | null>(null);
-   //** loading submit */
+  //** loading submit */
   const [isSubmiting, setIsSubmiting] = React.useState<boolean>(false);
   //** function submit */
   const onSubmit = handleSubmit(async (data) => {
     try {
       setIsSubmiting(true);
-       await axios.post("/api/issues", data).then((res) => {
+      await axios.post("/api/issues", data).then((res) => {
         // ** Redirect to /issues *
         router.push("/issues");
         setIsSubmiting(false);
@@ -51,7 +51,7 @@ function NewIssue() {
       <TextField.Root>
         <TextField.Input placeholder="title" {...register("title")} />
       </TextField.Root>
-       {/** Title Input error*/}
+      {/** Title Input error*/}
       {errors.title && <MSError>{errors.title.message}</MSError>}
       {/** Description Input */}
       <Controller
@@ -61,11 +61,11 @@ function NewIssue() {
           <SimpleMDE placeholder="description new issues" {...field} />
         )}
       />
-       {/** Description Input error */}
+      {/** Description Input error */}
       {errors.description && <MSError>{errors.description.message}</MSError>}
-       {/** Button Submit new Issue */}
+      {/** Button Submit new Issue */}
       <Button>Submit {isSubmiting && <MSLoading />}</Button>
-      {/** when error from backend */}     
+      {/** when error from backend */}
       {error && (
         <Callout.Root>
           <Callout.Icon>s</Callout.Icon>

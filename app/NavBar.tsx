@@ -7,20 +7,9 @@ interface Ilink {
   label: string;
   href: string;
 }
+
 function NavBar() {
   const currentPathname = usePathname();
-  const link: Ilink[] = [
-    {
-      label: "Dashboard",
-      href: "/",
-    },
-    {
-      label: "Issues",
-      href: "/issues",
-    },
-  ];
-  console.log("currentPathname", currentPathname);
-
   return (
     <nav className="flex space-x-6 border-b mb-2 px-5 h-14 items-center">
       <Link href="/">
@@ -44,5 +33,15 @@ function NavBar() {
     </nav>
   );
 }
+const link: Ilink[] = [
+  {
+    label: "Dashboard",
+    href: "/",
+  },
+  {
+    label: "Issues",
+    href: "/issues",
+  },
+];
 
 export default NavBar;
