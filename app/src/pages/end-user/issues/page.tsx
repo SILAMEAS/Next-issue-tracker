@@ -44,7 +44,7 @@ function Issues() {
         />
       )}
       <Button>
-        <Link href={ConstantRoute.ISSUE.get}>New Issue</Link>
+        <Link href={ConstantRoute.ISSUE.create}>New Issue</Link>
       </Button>
     </div>
   );
