@@ -44,7 +44,7 @@ const link: Ilink[] = [
   },
   {
     label: NameNavBar.ISSUE,
-    href: ConstantRoute.ISSUE.get,
+    href: ConstantRoute.EndUser.ISSUE.get,
   },
 ];
 

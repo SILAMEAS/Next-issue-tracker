@@ -8,7 +8,6 @@ import axios from "axios";
 import Link from "next/link";
 import React from "react";
 
-
 function Issues() {
   const [data, setData] = React.useState<IGetIsues[]>([]);
   const getData = async () => {
@@ -25,9 +24,9 @@ function Issues() {
     <div className="space-y-5">
       {data.length > 0 && (
         <MsTable
-        className="h-[70vh]"
+          className="h-[70vh]"
           render={data.map((item) => (
-            <Table.Row key={item.id} onClick={()=>console.log(item.id)}>
+            <Table.Row key={item.id} onClick={() => console.log(item.id)}>
               <Table.RowHeaderCell>{item.title}</Table.RowHeaderCell>
               <Table.Cell>{item.description}</Table.Cell>
               <Table.Cell>{item.status}</Table.Cell>
@@ -43,9 +42,11 @@ function Issues() {
           ]}
         />
       )}
+      <div className="space-x-5">
       <Button>
-        <Link href={ConstantRoute.ISSUE.create}>New Issue</Link>
+        <Link href={ConstantRoute.EndUser.ISSUE.create}>New Issue</Link>
       </Button>
+      </div>
     </div>
   );
 }

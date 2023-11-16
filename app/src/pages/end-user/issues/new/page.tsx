@@ -37,7 +37,7 @@ function NewIssue() {
       setIsSubmiting(true);
       await axios.post("/api/issues", data).then((res) => {
         // ** Redirect to /issues *
-        router.replace(ConstantRoute.ISSUE.get);
+        router.replace(ConstantRoute.EndUser.ISSUE.get);
         setIsSubmiting(false);
       });
     } catch (error: any) {
