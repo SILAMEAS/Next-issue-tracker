@@ -1,11 +1,13 @@
 "use client";
-import { MsTable } from "@/app/components/ms-table/MSTable";
-import { ConstantRoute } from "@/app/constants/ConstantRoute";
+
+import { IGetIsues } from "@/app/api/issues/route";
+import { MsTable } from "@/app/src/components/ms-table/MSTable";
+import { ConstantRoute } from "@/app/src/constants/ConstantRoute";
 import { Button, Table } from "@radix-ui/themes";
 import axios from "axios";
 import Link from "next/link";
 import React from "react";
-import { IGetIsues } from "../../api/issues/route";
+
 
 function Issues() {
   const [data, setData] = React.useState<IGetIsues[]>([]);
@@ -41,7 +43,6 @@ function Issues() {
           ]}
         />
       )}
-
       <Button>
         <Link href={ConstantRoute.ISSUE.get}>New Issue</Link>
       </Button>

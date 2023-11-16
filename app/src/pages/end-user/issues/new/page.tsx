@@ -1,8 +1,8 @@
 "use client";
-
-import MSError from "@/app/components/ms-error/MSError";
-import {MSLoading} from "@/app/components/ms-loading/MSLoading";
-import {IcreateIssue} from "@/app/utils/common/ValidateSchema";
+import MSError from "@/app/src/components/ms-error/MSError";
+import { MSLoading } from "@/app/src/components/ms-loading/MSLoading";
+import { ConstantRoute } from "@/app/src/constants/ConstantRoute";
+import { IcreateIssue } from "@/app/src/utils/common/ValidateSchema";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {Button, Callout, TextField} from "@radix-ui/themes";
 import axios from "axios";
@@ -12,7 +12,6 @@ import React, {useState} from "react";
 import {Controller, useForm} from "react-hook-form";
 import SimpleMDE from "react-simplemde-editor";
 import {z} from "zod";
-
 export type IssuesForm = z.infer<typeof IcreateIssue>;
 function NewIssue() {
   const router = useRouter();
@@ -38,7 +37,7 @@ function NewIssue() {
       setIsSubmiting(true);
       await axios.post("/api/issues", data).then((res) => {
         // ** Redirect to /issues *
-        router.push("/issues");
+        router.replace(ConstantRoute.ISSUE.get);
         setIsSubmiting(false);
       });
     } catch (error: any) {

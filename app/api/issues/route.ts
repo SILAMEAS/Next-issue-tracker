@@ -1,6 +1,7 @@
+import { IcreateIssue } from "@/app/src/utils/common/ValidateSchema";
 import prisma from "@/prisma/client";
 import { NextRequest, NextResponse } from "next/server";
-import { IcreateIssue } from "../../utils/common/ValidateSchema";
+
 export interface IGetIsues{
     id:number;
     title:string;

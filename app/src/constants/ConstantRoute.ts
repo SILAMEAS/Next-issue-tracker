@@ -1,9 +1,9 @@
 export const ConstantRoute = {
     Home:'/',
     ISSUE:{
-        create:"",
+        create:"/src/pages/end-user/issues/new",
         delete:"",
         update:"",
-        get:"/src/issues"
+        get:"/src/pages/end-user/issues"
     }
 }

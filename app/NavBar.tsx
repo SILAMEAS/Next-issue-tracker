@@ -3,8 +3,9 @@ import classNames from "classnames";
 import Link from "next/link";
 import {usePathname} from "next/navigation";
 import {FaBug} from "react-icons/fa";
-import {ConstantRoute} from "@/app/constants/ConstantRoute";
-import {NameNavBar} from "@/app/constants/Constant";
+import { NameNavBar } from "./src/constants/Constant";
+import { ConstantRoute } from "./src/constants/ConstantRoute";
+
 
 interface Ilink {
   label: string;
