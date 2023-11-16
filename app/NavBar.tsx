@@ -1,8 +1,11 @@
 "use client";
 import classNames from "classnames";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { FaBug } from "react-icons/fa";
+import {usePathname} from "next/navigation";
+import {FaBug} from "react-icons/fa";
+import {ConstantRoute} from "@/app/constants/ConstantRoute";
+import {NameNavBar} from "@/app/constants/Constant";
+
 interface Ilink {
   label: string;
   href: string;
@@ -35,12 +38,12 @@ function NavBar() {
 }
 const link: Ilink[] = [
   {
-    label: "Dashboard",
-    href: "/",
+    label: NameNavBar.Dashboard,
+    href: ConstantRoute.Home,
   },
   {
-    label: "Issues",
-    href: "/issues",
+    label: NameNavBar.ISSUE,
+    href: ConstantRoute.ISSUE.get,
   },
 ];
 

@@ -1,4 +1,4 @@
-import { IssuesForm } from "@/app/issues/new/page";
+import { IssuesForm } from "@/app/src/issues/new/page";
 import axios from "axios";
 
 export const AddIssueApi = async (data:IssuesForm) => {

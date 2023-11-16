@@ -9,8 +9,8 @@ export interface IGetIsues{
     createAt:Date;
     updatedAt:Date;
 }
-export async function POST(requset: NextRequest) {
-  const body = await requset.json();
+export async function POST(req: NextRequest) {
+  const body = await req.json();
   const validation = IcreateIssue.safeParse(body);
   if (!validation.success) {
     return NextResponse.json(validation.error.formErrors, { status: 400 });
@@ -24,7 +24,11 @@ export async function POST(requset: NextRequest) {
 export async function GET() {
   const allIssue: IGetIsues[] = await prisma.issue.findMany();
   if (allIssue){
-    return NextResponse.json(allIssue, { status: 201 });
+    return NextResponse.json(allIssue, { status: 200 });
   } 
   else return NextResponse.json([], { status: 400 });
+}
+export async function DELETE(pa:NextRequest) {
+  const body = await pa.json();
+  console.log(body)
 }

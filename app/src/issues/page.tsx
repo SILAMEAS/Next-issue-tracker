@@ -1,9 +1,11 @@
 "use client";
+import { MsTable } from "@/app/components/ms-table/MSTable";
+import { ConstantRoute } from "@/app/constants/ConstantRoute";
 import { Button, Table } from "@radix-ui/themes";
 import axios from "axios";
 import Link from "next/link";
 import React from "react";
-import { IGetIsues } from "../api/issues/route";
+import { IGetIsues } from "../../api/issues/route";
 
 function Issues() {
   const [data, setData] = React.useState<IGetIsues[]>([]);
@@ -16,31 +18,32 @@ function Issues() {
   React.useEffect(() => {
     getData();
   }, []);
- 
+
   return (
     <div className="space-y-5">
-      <Table.Root>
-        <Table.Header>
-          <Table.Row>
-            <Table.ColumnHeaderCell>Title</Table.ColumnHeaderCell>
-            <Table.ColumnHeaderCell>Description</Table.ColumnHeaderCell>
-            <Table.ColumnHeaderCell>Status</Table.ColumnHeaderCell>
-          </Table.Row>
-        </Table.Header>
-
-        <Table.Body>
-          {data.length>0&& data.map((item) => (
-            <Table.Row key={item.id}>
+      {data.length > 0 && (
+        <MsTable
+        className="h-[70vh]"
+          render={data.map((item) => (
+            <Table.Row key={item.id} onClick={()=>console.log(item.id)}>
               <Table.RowHeaderCell>{item.title}</Table.RowHeaderCell>
               <Table.Cell>{item.description}</Table.Cell>
               <Table.Cell>{item.status}</Table.Cell>
-              <Table.Cell onClick={()=>console.log(item.id)}>Delete</Table.Cell>
+              {/* <Table.Cell onClick={() => console.log(item.id)}>
+                Delete
+              </Table.Cell> */}
             </Table.Row>
           ))}
-        </Table.Body>
-      </Table.Root>
+          header={[
+            { label: "Title", value: "A" },
+            { label: "Description", value: "B" },
+            { label: "Status", value: "C" },
+          ]}
+        />
+      )}
+
       <Button>
-        <Link href="/issues/new">New Issue</Link>
+        <Link href={ConstantRoute.ISSUE.get}>New Issue</Link>
       </Button>
     </div>
   );

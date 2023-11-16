@@ -1,17 +1,17 @@
 "use client";
 
 import MSError from "@/app/components/ms-error/MSError";
-import { MSLoading } from "@/app/components/ms-loading/MSLoading";
-import { IcreateIssue } from "@/app/utils/common/ValidateSchema";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Button, Callout, TextField } from "@radix-ui/themes";
+import {MSLoading} from "@/app/components/ms-loading/MSLoading";
+import {IcreateIssue} from "@/app/utils/common/ValidateSchema";
+import {zodResolver} from "@hookform/resolvers/zod";
+import {Button, Callout, TextField} from "@radix-ui/themes";
 import axios from "axios";
 import "easymde/dist/easymde.min.css";
-import { useRouter } from "next/navigation";
-import React, { useState } from "react";
-import { Controller, useForm } from "react-hook-form";
+import {useRouter} from "next/navigation";
+import React, {useState} from "react";
+import {Controller, useForm} from "react-hook-form";
 import SimpleMDE from "react-simplemde-editor";
-import { z } from "zod";
+import {z} from "zod";
 
 export type IssuesForm = z.infer<typeof IcreateIssue>;
 function NewIssue() {
